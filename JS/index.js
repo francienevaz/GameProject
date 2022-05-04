@@ -188,7 +188,7 @@ function start() { // Inicio da fun��o start()
 				
 			reposicionaInimigo2();
 				
-			}
+		}
 		// Disparo com o inimigo1
 		
 		if (colisao3.length>0) {			
@@ -203,7 +203,7 @@ function start() { // Inicio da fun��o start()
 			$("#inimigo1").css("left",694);
 			$("#inimigo1").css("top",posicaoY);
 				
-			}
+		}
 		// Disparo com o inimigo2
 		
 		if (colisao4.length>0) {
@@ -226,6 +226,18 @@ function start() { // Inicio da fun��o start()
 			$("#amigo").remove();
 		}
 
+		//Inimigo2 com o amigo
+		
+		if (colisao6.length>0) {
+				
+			amigoX = parseInt($("#amigo").css("left"));
+			amigoY = parseInt($("#amigo").css("top"));
+			explosao3(amigoX,amigoY);
+			$("#amigo").remove();
+					
+			reposicionaAmigo();					
+		}
+
 	} //Fim da função colisão()
 	//Explosão 1
 	function explosao1(inimigo1X,inimigo1Y) {
@@ -242,11 +254,10 @@ function start() { // Inicio da fun��o start()
 				
 				div.remove();
 				window.clearInterval(tempoExplosao);
-				tempoExplosao=null;
-				
-			}
+				tempoExplosao=null;				
+		}
 			
-		} // Fim da fun��o explosao1()
+	} // Fim da fun��o explosao1()
 		//Reposiciona Inimigo2
 	
 	function reposicionaInimigo2() {
@@ -261,8 +272,7 @@ function start() { // Inicio da fun��o start()
 				
 				$("#fundoGame").append("<div id=inimigo2></div");
 				
-				}
-				
+				}				
 			}	
 		}	
 	//Reposiciona Amigo
@@ -304,11 +314,23 @@ function start() { // Inicio da fun��o start()
 			window.clearInterval(tempoExplosao2);
 			tempoExplosao2=null;
 			
+		}		
+	} // Fim da fun��o explosao2()
+	
+//Explos�o3
+	
+	function explosao3(amigoX,amigoY) {
+		$("#fundoGame").append("<div id='explosao3' class='anima4'></div");
+		$("#explosao3").css("top",amigoY);
+		$("#explosao3").css("left",amigoX);
+		var tempoExplosao3=window.setInterval(resetaExplosao3, 1000);
+		function resetaExplosao3() {
+		$("#explosao3").remove();
+		window.clearInterval(tempoExplosao3);
+		tempoExplosao3=null;
+				
 		}
 		
-		
-	} // Fim da fun��o explosao2()
-
-
+	} // Fim da fun��o explosao3
 }
 
