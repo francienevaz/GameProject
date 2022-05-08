@@ -11,28 +11,28 @@ function start() { // Inicio da fun��o start()
 
 	//Principais vari�veis do jogo
 	
-	var jogo = {}
-	var velocidade=5;
-	var pontos=0;
-	var salvos=0;
-	var perdidos=0;
-	var energiaAtual=3;
-	var posicaoY = parseInt(Math.random() * 334);
-	var podeAtirar=true;
-	var fimdejogo=false;
-	var TECLA = {
+	let jogo = {}
+	let velocidade=5;
+	let pontos=0;
+	let salvos=0;
+	let perdidos=0;
+	let energiaAtual=3;
+	let posicaoY = parseInt(Math.random() * 334);
+	let podeAtirar=true;
+	let fimdejogo=false;
+	let TECLA = {
 		W: 87,
 		S: 83,
 		D: 68
 		}
 	
 	jogo.pressionou = [];
-	var somDisparo=document.getElementById("somDisparo");
-	var somExplosao=document.getElementById("somExplosao");
-	var musica=document.getElementById("musica");
-	var somGameover=document.getElementById("somGameover");
-	var somPerdido=document.getElementById("somPerdido");
-	var somResgate=document.getElementById("somResgate");	
+	let somDisparo=document.getElementById("somDisparo");
+	let somExplosao=document.getElementById("somExplosao");
+	let musica=document.getElementById("musica");
+	let somGameover=document.getElementById("somGameover");
+	let somPerdido=document.getElementById("somPerdido");
+	let somResgate=document.getElementById("somResgate");	
 
 	//M�sica em loop
 	musica.addEventListener("ended", function(){ musica.currentTime = 0; musica.play(); }, false);
@@ -179,12 +179,12 @@ function start() { // Inicio da fun��o start()
 } // Fecha disparo()
 
 	function colisao() {
-	var colisao1 = ($("#jogador").collision($("#inimigo1")));
-	var colisao2 = ($("#jogador").collision($("#inimigo2")));
-	var colisao3 = ($("#disparo").collision($("#inimigo1")));
-	var colisao4 = ($("#disparo").collision($("#inimigo2")));
-	var colisao5 = ($("#jogador").collision($("#amigo")));
-	var colisao6 = ($("#inimigo2").collision($("#amigo")));
+	let colisao1 = ($("#jogador").collision($("#inimigo1")));
+	let colisao2 = ($("#jogador").collision($("#inimigo2")));
+	let colisao3 = ($("#disparo").collision($("#inimigo1")));
+	let colisao4 = ($("#disparo").collision($("#inimigo2")));
+	let colisao5 = ($("#jogador").collision($("#amigo")));
+	let colisao6 = ($("#inimigo2").collision($("#amigo")));
 	// jogador com o inimigo1
 		
 		if (colisao1.length>0) {
@@ -273,12 +273,12 @@ function start() { // Inicio da fun��o start()
 		somExplosao.play();
 		$("#fundoGame").append("<div id='explosao1'></div");
 		$("#explosao1").css("background-image", "url(Imgs/explosao.png)");
-		var div=$("#explosao1");
+		let div=$("#explosao1");
 		div.css("top", inimigo1Y);
 		div.css("left", inimigo1X);
 		div.animate({width:200, opacity:0}, "slow");
 		
-		var tempoExplosao=window.setInterval(removeExplosao, 1000);
+		let tempoExplosao=window.setInterval(removeExplosao, 1000);
 		
 			function removeExplosao() {
 				
@@ -292,7 +292,7 @@ function start() { // Inicio da fun��o start()
 	
 	function reposicionaInimigo2() {
 	
-		var tempoColisao4=window.setInterval(reposiciona4, 5000);
+		let tempoColisao4=window.setInterval(reposiciona4, 5000);
 			
 			function reposiciona4() {
 			window.clearInterval(tempoColisao4);
@@ -309,7 +309,7 @@ function start() { // Inicio da fun��o start()
 	
 	function reposicionaAmigo() {
 	
-		var tempoAmigo=window.setInterval(reposiciona6, 6000);
+		let tempoAmigo=window.setInterval(reposiciona6, 6000);
 		
 			function reposiciona6() {
 			window.clearInterval(tempoAmigo);
@@ -337,7 +337,7 @@ function start() { // Inicio da fun��o start()
 	div2.css("left", inimigo2X);
 	div2.animate({width:200, opacity:0}, "slow");
 	
-	var tempoExplosao2=window.setInterval(removeExplosao2, 1000);
+	let tempoExplosao2=window.setInterval(removeExplosao2, 1000);
 	
 		function removeExplosao2() {
 			
@@ -356,7 +356,7 @@ function start() { // Inicio da fun��o start()
 		$("#fundoGame").append("<div id='explosao3' class='anima4'></div");
 		$("#explosao3").css("top",amigoY);
 		$("#explosao3").css("left",amigoX);
-		var tempoExplosao3=window.setInterval(resetaExplosao3, 1000);
+		let tempoExplosao3=window.setInterval(resetaExplosao3, 1000);
 		function resetaExplosao3() {
 		$("#explosao3").remove();
 		window.clearInterval(tempoExplosao3);
